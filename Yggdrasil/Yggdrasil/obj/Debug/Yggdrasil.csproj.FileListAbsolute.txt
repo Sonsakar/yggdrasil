@@ -1,0 +1,10 @@
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Debug\Yggdrasil.exe.config
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Debug\Yggdrasil.exe
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Debug\Yggdrasil.pdb
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.csprojAssemblyReference.cache
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.Yggdrasil.resources
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.Properties.Resources.resources
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.csproj.GenerateResource.cache
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.csproj.CoreCompileInputs.cache
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.exe
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.pdb

@@ -29,49 +29,52 @@
         private void InitializeComponent()
         {
             this.myTabs = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.selectTab = new System.Windows.Forms.TabPage();
+            this.charTab = new System.Windows.Forms.TabPage();
             this.storyPage = new System.Windows.Forms.TabPage();
             this.saveBtn = new System.Windows.Forms.Button();
             this.sceneLbl = new System.Windows.Forms.Label();
             this.situationLbl = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
             this.muteBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.myTabs.SuspendLayout();
+            this.charTab.SuspendLayout();
             this.storyPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // myTabs
             // 
-            this.myTabs.Controls.Add(this.tabPage1);
-            this.myTabs.Controls.Add(this.tabPage2);
+            this.myTabs.Controls.Add(this.selectTab);
+            this.myTabs.Controls.Add(this.charTab);
             this.myTabs.Controls.Add(this.storyPage);
-            this.myTabs.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.myTabs.Location = new System.Drawing.Point(0, 140);
+            this.myTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myTabs.Location = new System.Drawing.Point(0, 0);
             this.myTabs.Name = "myTabs";
             this.myTabs.SelectedIndex = 0;
-            this.myTabs.Size = new System.Drawing.Size(1023, 467);
+            this.myTabs.Size = new System.Drawing.Size(1023, 607);
             this.myTabs.TabIndex = 2;
             // 
-            // tabPage1
+            // selectTab
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1015, 441);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.selectTab.Location = new System.Drawing.Point(4, 22);
+            this.selectTab.Name = "selectTab";
+            this.selectTab.Padding = new System.Windows.Forms.Padding(3);
+            this.selectTab.Size = new System.Drawing.Size(1015, 581);
+            this.selectTab.TabIndex = 0;
+            this.selectTab.Text = "selectTab";
+            this.selectTab.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // charTab
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1015, 441);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.charTab.Controls.Add(this.button1);
+            this.charTab.Location = new System.Drawing.Point(4, 22);
+            this.charTab.Name = "charTab";
+            this.charTab.Padding = new System.Windows.Forms.Padding(3);
+            this.charTab.Size = new System.Drawing.Size(1015, 581);
+            this.charTab.TabIndex = 1;
+            this.charTab.Text = "charTab";
+            this.charTab.UseVisualStyleBackColor = true;
             // 
             // storyPage
             // 
@@ -80,14 +83,14 @@
             this.storyPage.Controls.Add(this.situationLbl);
             this.storyPage.Location = new System.Drawing.Point(4, 22);
             this.storyPage.Name = "storyPage";
-            this.storyPage.Size = new System.Drawing.Size(1015, 441);
+            this.storyPage.Size = new System.Drawing.Size(1015, 581);
             this.storyPage.TabIndex = 2;
             this.storyPage.Text = "storyPage";
             this.storyPage.UseVisualStyleBackColor = true;
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(770, 3);
+            this.saveBtn.Location = new System.Drawing.Point(754, 3);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 23);
             this.saveBtn.TabIndex = 5;
@@ -132,6 +135,15 @@
             this.muteBtn.Text = "MUTE";
             this.muteBtn.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(466, 427);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Yggdrasil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +158,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Yggdrasil_Load);
             this.myTabs.ResumeLayout(false);
+            this.charTab.ResumeLayout(false);
             this.storyPage.ResumeLayout(false);
             this.storyPage.PerformLayout();
             this.ResumeLayout(false);
@@ -155,14 +168,15 @@
         #endregion
 
         private System.Windows.Forms.TabControl myTabs;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage selectTab;
+        private System.Windows.Forms.TabPage charTab;
         private System.Windows.Forms.TabPage storyPage;
         private System.Windows.Forms.Label sceneLbl;
         private System.Windows.Forms.Label situationLbl;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Button muteBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
 

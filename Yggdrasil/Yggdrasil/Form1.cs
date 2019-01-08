@@ -14,7 +14,7 @@ namespace Yggdrasil
     {
 
         Button[] decisionBtns;
-        int decisionCount = 3;
+        int decisionCount = 10;
 
         public Yggdrasil()
         {
@@ -24,20 +24,17 @@ namespace Yggdrasil
         {
             int btnWidth = 50;
             int btnHeight = 40;
+            int btnGap = 10;
             decisionBtns = new Button[decisionCount];
+            int startX = Convert.ToInt32((storyPage.Width/2) - (Convert.ToDouble(decisionBtns.Length)/2 * btnWidth) - ((Convert.ToDouble(decisionBtns.Length-1))/2 * btnGap));
             for (int i = 0; i < decisionBtns.Length; i++)
             {
                 myTabs.TabPages[2].Controls.Add(decisionBtns[i] = new Button());
                 decisionBtns[i].Width = btnWidth;
                 decisionBtns[i].Height = btnHeight;
-
-                if (decisionCount % 2 == 0)
-                {
-
-                } else {
-                    
-                    decisionBtns[i].Location = new Point(((storyPage.Width / 2) - btnWidth / 2), ((Height / 2) - btnHeight / 2));
-                }
+                decisionBtns[i].Text = Convert.ToString(i);
+                decisionBtns[i].Location = new Point(startX, storyPage.Height / 2);
+                startX += btnWidth + btnGap;
             }
         }
 

@@ -1,5 +1,6 @@
 # Yggdrasil repository
-Find .json files in "Yggdrasil > Yggdrasil > bin > Debug > files"
+Find .json files in "Yggdrasil > Yggdrasil > bin > Debug > files"  
+
 Maybe use draw.io or something similiar to actually draw and connect story blocks
 
 #### Story .json

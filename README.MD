@@ -6,6 +6,9 @@ Maybe use draw.io or something similiar to actually draw and connect story block
 #### Story .json
 @Josina @ Melli write .txt files with one line scenery, one line situation, multiple lines with decisions (one each). We'll do the rest later
 
+#### Logos
+Logos are stored in yggdrasil/Yggdrasil/pic/
+
 #### Character .json
 Name files from "0.json" to "n.json". In "skills" fill out numbers based on specific character skills.
 > positions in array must stay the some through project

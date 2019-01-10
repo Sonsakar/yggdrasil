@@ -11,6 +11,7 @@
                     "probability": 1,
                     "conditions": [0, 35, 80, 63]
                 }
+            ]
         }
     ]
 }

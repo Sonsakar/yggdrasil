@@ -31,26 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Yggdrasil));
             this.myTabs = new System.Windows.Forms.TabControl();
             this.selectTab = new System.Windows.Forms.TabPage();
-            this.charTab = new System.Windows.Forms.TabPage();
             this.storyPage = new System.Windows.Forms.TabPage();
             this.saveBtn = new System.Windows.Forms.Button();
             this.sceneLbl = new System.Windows.Forms.Label();
             this.situationLbl = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
             this.muteBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.desLbl = new System.Windows.Forms.Label();
             this.startBtn = new System.Windows.Forms.Button();
-            this.backBtn = new System.Windows.Forms.Button();
             this.myTabs.SuspendLayout();
             this.selectTab.SuspendLayout();
-            this.charTab.SuspendLayout();
             this.storyPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // myTabs
             // 
             this.myTabs.Controls.Add(this.selectTab);
-            this.myTabs.Controls.Add(this.charTab);
             this.myTabs.Controls.Add(this.storyPage);
             this.myTabs.Location = new System.Drawing.Point(12, 93);
             this.myTabs.Name = "myTabs";
@@ -61,25 +57,14 @@
             // selectTab
             // 
             this.selectTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(84)))));
-            this.selectTab.Controls.Add(this.button1);
+            this.selectTab.Controls.Add(this.startBtn);
+            this.selectTab.Controls.Add(this.desLbl);
             this.selectTab.Location = new System.Drawing.Point(4, 22);
             this.selectTab.Name = "selectTab";
             this.selectTab.Padding = new System.Windows.Forms.Padding(3);
             this.selectTab.Size = new System.Drawing.Size(969, 488);
             this.selectTab.TabIndex = 0;
             this.selectTab.Text = "selectTab";
-            // 
-            // charTab
-            // 
-            this.charTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(84)))));
-            this.charTab.Controls.Add(this.backBtn);
-            this.charTab.Controls.Add(this.startBtn);
-            this.charTab.Location = new System.Drawing.Point(4, 22);
-            this.charTab.Name = "charTab";
-            this.charTab.Padding = new System.Windows.Forms.Padding(3);
-            this.charTab.Size = new System.Drawing.Size(969, 488);
-            this.charTab.TabIndex = 1;
-            this.charTab.Text = "charTab";
             // 
             // storyPage
             // 
@@ -160,35 +145,25 @@
             this.muteBtn.TabIndex = 4;
             this.muteBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // desLbl
             // 
-            this.button1.Location = new System.Drawing.Point(157, 128);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "char1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.desLbl.AutoSize = true;
+            this.desLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
+            this.desLbl.Location = new System.Drawing.Point(648, 156);
+            this.desLbl.Name = "desLbl";
+            this.desLbl.Size = new System.Drawing.Size(35, 13);
+            this.desLbl.TabIndex = 1;
+            this.desLbl.Text = "label1";
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(447, 313);
+            this.startBtn.Location = new System.Drawing.Point(728, 377);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
-            this.startBtn.TabIndex = 0;
-            this.startBtn.Text = "start";
+            this.startBtn.TabIndex = 2;
+            this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
-            // 
-            // backBtn
-            // 
-            this.backBtn.Location = new System.Drawing.Point(86, 61);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(75, 23);
-            this.backBtn.TabIndex = 1;
-            this.backBtn.Text = "back";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // Yggdrasil
             // 
@@ -207,7 +182,7 @@
             this.Load += new System.EventHandler(this.Yggdrasil_Load);
             this.myTabs.ResumeLayout(false);
             this.selectTab.ResumeLayout(false);
-            this.charTab.ResumeLayout(false);
+            this.selectTab.PerformLayout();
             this.storyPage.ResumeLayout(false);
             this.storyPage.PerformLayout();
             this.ResumeLayout(false);
@@ -218,15 +193,13 @@
 
         private System.Windows.Forms.TabControl myTabs;
         private System.Windows.Forms.TabPage selectTab;
-        private System.Windows.Forms.TabPage charTab;
         private System.Windows.Forms.TabPage storyPage;
         private System.Windows.Forms.Label situationLbl;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Button muteBtn;
         private System.Windows.Forms.Label sceneLbl;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Label desLbl;
         private System.Windows.Forms.Button startBtn;
     }
 }

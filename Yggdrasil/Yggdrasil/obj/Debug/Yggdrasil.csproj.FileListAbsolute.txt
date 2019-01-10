@@ -8,3 +8,7 @@ E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.csproj.Generate
 E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.csproj.CoreCompileInputs.cache
 E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.exe
 E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.pdb
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Debug\Newtonsoft.Json.dll
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Debug\Newtonsoft.Json.pdb
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Debug\Newtonsoft.Json.xml
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Debug\Yggdrasil.csproj.CopyComplete

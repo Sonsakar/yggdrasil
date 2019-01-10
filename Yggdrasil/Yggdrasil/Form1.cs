@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Yggdrasil
 {
@@ -15,6 +17,7 @@ namespace Yggdrasil
 
         Button[] decisionBtns;
         int decisionCount = 10;
+        dynamic[] chars;
 
         public Yggdrasil()
         {
@@ -29,7 +32,7 @@ namespace Yggdrasil
             int startX = Convert.ToInt32((Width/2) - (Convert.ToDouble(decisionBtns.Length)/2 * btnWidth) - ((Convert.ToDouble(decisionBtns.Length-1))/2 * btnGap));
             for (int i = 0; i < decisionBtns.Length; i++)
             {
-                myTabs.TabPages[2].Controls.Add(decisionBtns[i] = new Button());
+                myTabs.TabPages[1].Controls.Add(decisionBtns[i] = new Button());
                 decisionBtns[i].Width = btnWidth;
                 decisionBtns[i].Height = btnHeight;
                 decisionBtns[i].Text = Convert.ToString(i);
@@ -51,22 +54,52 @@ namespace Yggdrasil
             muteBtn.BringToFront();
             muteBtn.Location = new Point(Width - btnGap * 2 - btnEdge * 2, btnGap);
 
-            //Tabs
+            #region Tabs
 
             myTabs.Size = new Size(Width + 8, Height + 26);
             myTabs.Location = new Point(-4, -22);
 
+            #region StoryTab
             sceneLbl.MaximumSize = new Size(Width * 60 / 100, 0);
             sceneLbl.Location = new Point((Width / 2) - sceneLbl.Width / 2, Height * 15 / 100);
 
             situationLbl.MaximumSize = new Size(Width * 60 / 100, 0);
             situationLbl.Location = new Point((Width / 2) - situationLbl.Width / 2, Height * 20 / 100 + sceneLbl.Height);
 
-
             saveBtn.Size = new Size(btnEdge, btnEdge);
             saveBtn.Location = new Point(Width - btnGap * 3 - btnEdge * 3, btnGap);
+            #endregion
 
             
+            //Character Buttons
+            int charCount = 0;
+            Size charBtnSize = new Size(200, 50);
+            int charBtnGap = 20;
+            for (int i = 0; i < 100; i++)
+            {
+                if(File.Exists("files/char/" + i + ".json"))
+                    charCount++;
+            }
+            Button[] charBtns = new Button[charCount];
+            chars = new dynamic[charCount];
+            for (int i = 0; i < charCount; i++)
+            {
+                chars[i] = JsonConvert.DeserializeObject(File.ReadAllText("files/char/" + i + ".json"));
+                myTabs.TabPages[0].Controls.Add(charBtns[i] = new Button());
+                charBtns[i].Size = charBtnSize;              
+                charBtns[i].Location = new Point( Width - Width * 90 / 100, i * (charBtnGap + charBtnSize.Height) + 150);
+                charBtns[i].Tag = i;
+                charBtns[i].Text = chars[i].name;
+                charBtns[i].ForeColor = 247, 241, 227;
+                charBtns[i].Click += new EventHandler(charBtn_Click);
+            }
+            #endregion
+
+        }
+        private void charBtn_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            desLbl.Text = chars[Convert.ToInt32(button.Tag)].description;
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -78,16 +111,6 @@ namespace Yggdrasil
         private void saveBtn_Click(object sender, EventArgs e)
         {
             loadDecisions();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            myTabs.SelectedIndex++;
-        }
-
-        private void backBtn_Click(object sender, EventArgs e)
-        {
-            myTabs.SelectedIndex--;
         }
 
         private void startBtn_Click(object sender, EventArgs e)

@@ -4,7 +4,7 @@ Find .json files in "Yggdrasil > Yggdrasil > bin > Debug > files"
 Maybe use draw.io or something similiar to actually draw and connect story blocks
 
 #### Story .json
-@Josina @ Melli write .txt files with one line scenery, one line situation, multiple lines with decisions (one each). We'll do the rest later
+@Josina @ Melli write .txt files with one line scenery, one line situation, multiple lines with decisions (one each). You can also use the correct json format if you like.
 
 #### Logos
 Logos are stored in yggdrasil/Yggdrasil/pic/

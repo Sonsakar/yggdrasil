@@ -18,7 +18,7 @@ namespace Yggdrasil
         Button[] decisionBtns;
         int decisionCount = 10;
         dynamic[] chars;
-
+        Color light = new Color();
         public Yggdrasil()
         {
             InitializeComponent();
@@ -46,6 +46,8 @@ namespace Yggdrasil
             int btnEdge = 60;
             int btnGap = 20;
 
+            light = Color.FromArgb(247, 241, 227);
+
             exitBtn.Size = new Size(btnEdge, btnEdge);
             exitBtn.BringToFront();
             exitBtn.Location = new Point(Width - btnGap - btnEdge, btnGap);
@@ -70,7 +72,7 @@ namespace Yggdrasil
             saveBtn.Location = new Point(Width - btnGap * 3 - btnEdge * 3, btnGap);
             #endregion
 
-            
+            #region CharacterTab
             //Character Buttons
             int charCount = 0;
             Size charBtnSize = new Size(200, 50);
@@ -90,9 +92,11 @@ namespace Yggdrasil
                 charBtns[i].Location = new Point( Width - Width * 90 / 100, i * (charBtnGap + charBtnSize.Height) + 150);
                 charBtns[i].Tag = i;
                 charBtns[i].Text = chars[i].name;
-                charBtns[i].ForeColor = 247, 241, 227;
+                charBtns[i].ForeColor = light;
                 charBtns[i].Click += new EventHandler(charBtn_Click);
             }
+            #endregion
+           
             #endregion
 
         }

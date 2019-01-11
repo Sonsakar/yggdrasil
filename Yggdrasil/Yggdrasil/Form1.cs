@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Yggdrasil
 {
@@ -16,37 +11,72 @@ namespace Yggdrasil
     {
 
         Button[] decisionBtns;
-        int decisionCount = 10;
         dynamic[] chars;
+        dynamic myChar;
+        Story curStory;
         Color light = new Color();
+        Color decisionColor = new Color();
+        Color fade = new Color();
+        Font main = new Font("Book Antiqua", 15.75f);
+        List<int> storyIds = new List<int>();
+        int timerNum = 0;
+
         public Yggdrasil()
         {
             InitializeComponent();
         }
-        public void loadDecisions()
+        public void loadStory()
         {
-            int btnWidth = 50;
-            int btnHeight = 40;
-            int btnGap = 10;
+            storyIds.Add(curStory.ID);
+            sceneLbl.Text = curStory.scenery;
+            sceneLbl.Location = new Point((Width / 2) - sceneLbl.Width / 2, Height * 15 / 100);
+            situationLbl.Text = curStory.situation;
+            situationLbl.Location = new Point((Width / 2) - situationLbl.Width / 2, Height * 20 / 100 + sceneLbl.Height);
+
+            int decisionCount = curStory.decisions.Length;
+
+            int btnWidth = Width * 10 / 100;
+            int btnHeight = Height * 5 / 100;
+            Size btnMin = new Size(btnWidth, btnHeight);
+            Size btnMax = new Size(btnWidth * 2, btnHeight);
+            int btnGap = 12;
             decisionBtns = new Button[decisionCount];
-            int startX = Convert.ToInt32((Width/2) - (Convert.ToDouble(decisionBtns.Length)/2 * btnWidth) - ((Convert.ToDouble(decisionBtns.Length-1))/2 * btnGap));
+            int offset = 0;
             for (int i = 0; i < decisionBtns.Length; i++)
             {
                 myTabs.TabPages[1].Controls.Add(decisionBtns[i] = new Button());
-                decisionBtns[i].Width = btnWidth;
-                decisionBtns[i].Height = btnHeight;
-                decisionBtns[i].Text = Convert.ToString(i);
+                decisionBtns[i].MinimumSize = btnMin;
+                decisionBtns[i].MaximumSize = btnMax;
+                decisionBtns[i].AutoSize = true;
+                decisionBtns[i].ForeColor = decisionColor;
+                decisionBtns[i].FlatStyle = FlatStyle.Flat;
+                decisionBtns[i].FlatAppearance.BorderSize = 0;
+                decisionBtns[i].Font = main;
+                decisionBtns[i].Text = curStory.decisions[i].text;
+                decisionBtns[i].Click += new EventHandler(decisionBtn_Click);
+                offset += decisionBtns[i].Width;
+            }
+            int startX = Convert.ToInt32((Width / 2) - ( offset / 2 ) - ( (decisionBtns.Length -1) * btnGap / 2));
+            Console.WriteLine(offset);
+            for (int i = 0; i < decisionBtns.Length; i++)
+            {              
                 decisionBtns[i].Location = new Point(startX, Height * 30 / 100 + situationLbl.Height + sceneLbl.Height);
-                startX += btnWidth + btnGap;
+                startX += decisionBtns[i].Width + btnGap;
             }
         }
-
+        private void decisionBtn_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            //fadeOutTimer.Enabled = true;
+            //fancy jormun stuff
+        }
         private void Yggdrasil_Load(object sender, EventArgs e)
         {
             int btnEdge = 60;
             int btnGap = 20;
 
             light = Color.FromArgb(247, 241, 227);
+            decisionColor = Color.FromArgb(204, 142, 53);
 
             exitBtn.Size = new Size(btnEdge, btnEdge);
             exitBtn.BringToFront();
@@ -64,6 +94,7 @@ namespace Yggdrasil
             #region StoryTab
             sceneLbl.MaximumSize = new Size(Width * 60 / 100, 0);
             sceneLbl.Location = new Point((Width / 2) - sceneLbl.Width / 2, Height * 15 / 100);
+            sceneLbl.Parent = myTabs.TabPages[1];
 
             situationLbl.MaximumSize = new Size(Width * 60 / 100, 0);
             situationLbl.Location = new Point((Width / 2) - situationLbl.Width / 2, Height * 20 / 100 + sceneLbl.Height);
@@ -102,8 +133,11 @@ namespace Yggdrasil
         }
         private void charBtn_Click(object sender, EventArgs e)
         {
+            startBtn.Enabled = true;
             Button button = sender as Button;
-            desLbl.Text = chars[Convert.ToInt32(button.Tag)].description;
+            myChar = chars[Convert.ToInt32(button.Tag)];
+
+            desLbl.Text = myChar.description;
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -114,12 +148,40 @@ namespace Yggdrasil
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            loadDecisions();
+           
         }
 
         private void startBtn_Click(object sender, EventArgs e)
         {
             myTabs.SelectedIndex++;
+            curStory = JsonConvert.DeserializeObject<Story>(File.ReadAllText("files/story/" + myChar.startstory + ".json"));
+            loadStory();
+        }
+
+        private void fadeOutTimer_Tick(object sender, EventArgs e)
+        {
+            fade = Color.FromArgb(255 - timerNum, 247, 241, 227);
+            sceneLbl.ForeColor = fade;
+            situationLbl.ForeColor = fade;
+            timerNum++;
+            if (timerNum == 256)
+            {
+                timerNum = 0;
+                fadeOutTimer.Enabled = false;
+            }
+        }
+
+        private void fadeInTimer_Tick(object sender, EventArgs e)
+        {
+            fade = Color.FromArgb(timerNum, 247, 241, 227);
+            sceneLbl.ForeColor = fade;
+            situationLbl.ForeColor = fade;
+            timerNum++;
+            if (timerNum == 256)
+            {
+                timerNum = 0;
+                fadeInTimer.Enabled = false;
+            }
         }
     }
 }

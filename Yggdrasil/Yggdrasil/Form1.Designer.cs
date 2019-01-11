@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Yggdrasil));
             this.myTabs = new System.Windows.Forms.TabControl();
             this.selectTab = new System.Windows.Forms.TabPage();
+            this.startBtn = new System.Windows.Forms.Button();
+            this.desLbl = new System.Windows.Forms.Label();
             this.storyPage = new System.Windows.Forms.TabPage();
             this.saveBtn = new System.Windows.Forms.Button();
             this.sceneLbl = new System.Windows.Forms.Label();
             this.situationLbl = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
             this.muteBtn = new System.Windows.Forms.Button();
-            this.desLbl = new System.Windows.Forms.Label();
-            this.startBtn = new System.Windows.Forms.Button();
+            this.fadeInTimer = new System.Windows.Forms.Timer(this.components);
+            this.fadeOutTimer = new System.Windows.Forms.Timer(this.components);
             this.myTabs.SuspendLayout();
             this.selectTab.SuspendLayout();
             this.storyPage.SuspendLayout();
@@ -65,6 +68,27 @@
             this.selectTab.Size = new System.Drawing.Size(969, 488);
             this.selectTab.TabIndex = 0;
             this.selectTab.Text = "selectTab";
+            // 
+            // startBtn
+            // 
+            this.startBtn.Enabled = false;
+            this.startBtn.Location = new System.Drawing.Point(728, 377);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(75, 23);
+            this.startBtn.TabIndex = 2;
+            this.startBtn.Text = "Start";
+            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            // 
+            // desLbl
+            // 
+            this.desLbl.AutoSize = true;
+            this.desLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
+            this.desLbl.Location = new System.Drawing.Point(648, 156);
+            this.desLbl.Name = "desLbl";
+            this.desLbl.Size = new System.Drawing.Size(35, 13);
+            this.desLbl.TabIndex = 1;
+            this.desLbl.Text = "label1";
             // 
             // storyPage
             // 
@@ -145,25 +169,14 @@
             this.muteBtn.TabIndex = 4;
             this.muteBtn.UseVisualStyleBackColor = true;
             // 
-            // desLbl
+            // fadeInTimer
             // 
-            this.desLbl.AutoSize = true;
-            this.desLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
-            this.desLbl.Location = new System.Drawing.Point(648, 156);
-            this.desLbl.Name = "desLbl";
-            this.desLbl.Size = new System.Drawing.Size(35, 13);
-            this.desLbl.TabIndex = 1;
-            this.desLbl.Text = "label1";
+            this.fadeInTimer.Tick += new System.EventHandler(this.fadeInTimer_Tick);
             // 
-            // startBtn
+            // fadeOutTimer
             // 
-            this.startBtn.Location = new System.Drawing.Point(728, 377);
-            this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(75, 23);
-            this.startBtn.TabIndex = 2;
-            this.startBtn.Text = "Start";
-            this.startBtn.UseVisualStyleBackColor = true;
-            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            this.fadeOutTimer.Interval = 10;
+            this.fadeOutTimer.Tick += new System.EventHandler(this.fadeOutTimer_Tick);
             // 
             // Yggdrasil
             // 
@@ -201,6 +214,8 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Label desLbl;
         private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Timer fadeInTimer;
+        private System.Windows.Forms.Timer fadeOutTimer;
     }
 }
 

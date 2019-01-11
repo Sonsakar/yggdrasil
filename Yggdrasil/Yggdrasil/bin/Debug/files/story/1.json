@@ -2,6 +2,7 @@
     "ID" : 1,
     "scenery": "Du steht in einem großen Wald. *tolle Beschreibung vom Wald*",
     "situation": "Auf dem Weg liegt ein schlafender Oger. was tust du?",
+    "area": 0,
     "decisions": [
         {
             "text": "Am Oger vorbeischleichen",

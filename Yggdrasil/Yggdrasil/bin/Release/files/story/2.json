@@ -1,0 +1,18 @@
+{
+    "ID" : 2,
+    "scenery": "Die Asen schlagen dir einen Test deiner Kräfte vor; sie wollen dich fesseln und du sollst dich befreien. Du willigst ein. Mit einem Seil wirst du festgebunden, dann treten die Asen zurück und beobachten dich. Doch die Fesseln bieten keine Hürde für dich, mit Leichtigkeit kannst du sie zerreißen. Bald darauf kommen sie mit einem neuen Seil, was stärker ist als das letzte. Aber auch von diesen Fesseln kannst du dich mühelos befreien. Schließlich bringen sie noch ein Seil. Es ist geflochten aus dem Geräusch des Tritts der Katzen, den Bärten der Frauen, den Sehnen der Bären, den Wurzeln der Berge, dem Atem der Fische und dem Speichel der Vögel und soll noch stärker sein als die vorherigen. Wieder wollen sie dich damit fesseln.",
+    "situation": "Langsam wirst du skeptisch. Vielleicht möchten die Asen dir eine Falle stellen. Was machst du?",
+    "area": 0,
+    "decisions": [
+        {
+            "text": "Eine Absicherung verlangen",
+            "followups": [
+                {
+                    "ID": 3,
+                    "probability": 1,
+                    "conditions": [0, 35, 80, 63]
+                }
+            ]
+        }
+    ]
+}

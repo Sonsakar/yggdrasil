@@ -12,7 +12,7 @@ namespace Yggdrasil
 
         Button[] decisionBtns;
         dynamic[] chars;
-        dynamic myChar;
+        dynamic myChar; //skills: vig, end, str, dex, per, luck, int, mag
         Story curStory;
         Color light = new Color();
         Color decisionColor = new Color();
@@ -105,6 +105,12 @@ namespace Yggdrasil
 
             #region CharacterTab
             //Character Buttons
+            Size rightSpan = new Size(Width * 50 / 100, 0);
+            int startY = 150;
+            desLbl.Location = new Point(Width * 40 / 100, startY);
+            desLbl.MaximumSize = rightSpan;
+            skillLbl.MaximumSize = rightSpan;
+            startBtn.Size = new Size(Width * 50 / 100, Height * 5 / 100);
             int charCount = 0;
             Size charBtnSize = new Size(200, 50);
             int charBtnGap = 20;
@@ -120,24 +126,35 @@ namespace Yggdrasil
                 chars[i] = JsonConvert.DeserializeObject(File.ReadAllText("files/char/" + i + ".json"));
                 myTabs.TabPages[0].Controls.Add(charBtns[i] = new Button());
                 charBtns[i].Size = charBtnSize;              
-                charBtns[i].Location = new Point( Width - Width * 90 / 100, i * (charBtnGap + charBtnSize.Height) + 150);
+                charBtns[i].Location = new Point( Width - Width * 90 / 100, i * (charBtnGap + charBtnSize.Height) + startY);
                 charBtns[i].Tag = i;
                 charBtns[i].Text = chars[i].name;
+                charBtns[i].Font = main;
                 charBtns[i].ForeColor = light;
                 charBtns[i].Click += new EventHandler(charBtn_Click);
             }
+            skillLbl.Location = new Point(desLbl.Location.X, startY + desLbl.Height + 20);
+            startBtn.Location = new Point(skillLbl.Location.X, skillLbl.Location.Y + skillLbl.Height + 20);
             #endregion
-           
+
             #endregion
 
         }
         private void charBtn_Click(object sender, EventArgs e)
         {
             startBtn.Enabled = true;
+            startBtn.Visible = true;
             Button button = sender as Button;
             myChar = chars[Convert.ToInt32(button.Tag)];
-
+            //skills: vig, end, str, dex, per, luck, int, mag
             desLbl.Text = myChar.description;
+            skillLbl.Text = "\n\nDieser Charakter hat folgende Attribute:\nVitalität:          " + 
+                myChar.skills[0] + "\nAusdauer:           " + myChar.skills[1] + "\nStärke:             " + myChar.skills[2] + 
+                "\nGeschicklichkeit:   " + myChar.skills[3] + "\nWahrnehmung:        " + myChar.skills[4] + 
+                "\nGlück:              " + myChar.skills[5] + "\nIntelligenz:        " + myChar.skills[6] + 
+                "\nMagie:              " + myChar.skills[7];
+
+            startBtn.Location = new Point(skillLbl.Location.X, skillLbl.Location.Y + skillLbl.Height + 20);
         }
 
         private void exitBtn_Click(object sender, EventArgs e)

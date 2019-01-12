@@ -1,0 +1,38 @@
+{
+    "ID" : 1,
+    "scenery": "Du steht in einem großen Wald. *tolle Beschreibung vom Wald*",
+    "situation": "Auf dem Weg liegt ein schlafender Oger. was tust du?",
+    "area": 0,
+    "decisions": [
+        {
+            "text": "Am Oger vorbeischleichen",
+            "followups": [
+                {
+                    "ID": 2,
+                    "probability": 0.7,
+                    "conditions": [0, 35, 80, 63]
+                },
+                {
+                    "ID": 3,
+                    "probability": 0.4,
+                    "conditions": [0, 5, 90, 2]
+                }
+            ]
+        },
+        {
+            "text": "Den Oger erschlagen",
+            "followups": [
+                {
+                    "ID": 2,
+                    "probability": 0.1,
+                    "conditions": [0, 35, 40, 90]
+                },
+                {
+                    "ID": 3,
+                    "probability": 0.8,
+                    "conditions": [0, 5, 70, 2]
+                }
+            ]
+        }
+    ]
+}

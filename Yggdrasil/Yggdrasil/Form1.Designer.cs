@@ -42,6 +42,7 @@
             this.muteBtn = new System.Windows.Forms.Button();
             this.fadeInTimer = new System.Windows.Forms.Timer(this.components);
             this.fadeOutTimer = new System.Windows.Forms.Timer(this.components);
+            this.skillLbl = new System.Windows.Forms.Label();
             this.myTabs.SuspendLayout();
             this.selectTab.SuspendLayout();
             this.storyPage.SuspendLayout();
@@ -59,7 +60,8 @@
             // 
             // selectTab
             // 
-            this.selectTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(84)))));
+            this.selectTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
+            this.selectTab.Controls.Add(this.skillLbl);
             this.selectTab.Controls.Add(this.startBtn);
             this.selectTab.Controls.Add(this.desLbl);
             this.selectTab.Location = new System.Drawing.Point(4, 22);
@@ -72,27 +74,34 @@
             // startBtn
             // 
             this.startBtn.Enabled = false;
+            this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(63)))));
+            this.startBtn.FlatAppearance.BorderSize = 2;
+            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startBtn.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
             this.startBtn.Location = new System.Drawing.Point(728, 377);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(75, 23);
+            this.startBtn.Size = new System.Drawing.Size(176, 70);
             this.startBtn.TabIndex = 2;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Visible = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // desLbl
             // 
             this.desLbl.AutoSize = true;
+            this.desLbl.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
-            this.desLbl.Location = new System.Drawing.Point(648, 156);
+            this.desLbl.Location = new System.Drawing.Point(602, 51);
             this.desLbl.Name = "desLbl";
-            this.desLbl.Size = new System.Drawing.Size(35, 13);
+            this.desLbl.Size = new System.Drawing.Size(244, 26);
             this.desLbl.TabIndex = 1;
-            this.desLbl.Text = "label1";
+            this.desLbl.Text = "Wähle deinen Charakter.";
             // 
             // storyPage
             // 
-            this.storyPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(84)))));
+            this.storyPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
             this.storyPage.Controls.Add(this.saveBtn);
             this.storyPage.Controls.Add(this.sceneLbl);
             this.storyPage.Controls.Add(this.situationLbl);
@@ -178,11 +187,21 @@
             this.fadeOutTimer.Interval = 10;
             this.fadeOutTimer.Tick += new System.EventHandler(this.fadeOutTimer_Tick);
             // 
+            // skillLbl
+            // 
+            this.skillLbl.AutoSize = true;
+            this.skillLbl.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skillLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
+            this.skillLbl.Location = new System.Drawing.Point(603, 140);
+            this.skillLbl.Name = "skillLbl";
+            this.skillLbl.Size = new System.Drawing.Size(0, 23);
+            this.skillLbl.TabIndex = 3;
+            // 
             // Yggdrasil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(84)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1023, 607);
             this.Controls.Add(this.myTabs);
             this.Controls.Add(this.exitBtn);
@@ -216,6 +235,7 @@
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Timer fadeInTimer;
         private System.Windows.Forms.Timer fadeOutTimer;
+        private System.Windows.Forms.Label skillLbl;
     }
 }
 

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Yggdrasil));
             this.myTabs = new System.Windows.Forms.TabControl();
             this.selectTab = new System.Windows.Forms.TabPage();
+            this.skillLbl = new System.Windows.Forms.Label();
             this.startBtn = new System.Windows.Forms.Button();
             this.desLbl = new System.Windows.Forms.Label();
             this.storyPage = new System.Windows.Forms.TabPage();
@@ -42,7 +43,7 @@
             this.muteBtn = new System.Windows.Forms.Button();
             this.fadeInTimer = new System.Windows.Forms.Timer(this.components);
             this.fadeOutTimer = new System.Windows.Forms.Timer(this.components);
-            this.skillLbl = new System.Windows.Forms.Label();
+            this.muteTimer = new System.Windows.Forms.Timer(this.components);
             this.myTabs.SuspendLayout();
             this.selectTab.SuspendLayout();
             this.storyPage.SuspendLayout();
@@ -71,6 +72,18 @@
             this.selectTab.TabIndex = 0;
             this.selectTab.Text = "selectTab";
             // 
+            // skillLbl
+            // 
+            this.skillLbl.AutoSize = true;
+            this.skillLbl.BackColor = System.Drawing.Color.Transparent;
+            this.skillLbl.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skillLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
+            this.skillLbl.Location = new System.Drawing.Point(603, 140);
+            this.skillLbl.Name = "skillLbl";
+            this.skillLbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            this.skillLbl.Size = new System.Drawing.Size(0, 30);
+            this.skillLbl.TabIndex = 3;
+            // 
             // startBtn
             // 
             this.startBtn.Enabled = false;
@@ -91,11 +104,13 @@
             // desLbl
             // 
             this.desLbl.AutoSize = true;
+            this.desLbl.BackColor = System.Drawing.Color.Transparent;
             this.desLbl.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
             this.desLbl.Location = new System.Drawing.Point(602, 51);
             this.desLbl.Name = "desLbl";
-            this.desLbl.Size = new System.Drawing.Size(244, 26);
+            this.desLbl.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            this.desLbl.Size = new System.Drawing.Size(244, 33);
             this.desLbl.TabIndex = 1;
             this.desLbl.Text = "Wähle deinen Charakter.";
             // 
@@ -177,6 +192,7 @@
             this.muteBtn.Size = new System.Drawing.Size(75, 75);
             this.muteBtn.TabIndex = 4;
             this.muteBtn.UseVisualStyleBackColor = true;
+            this.muteBtn.Click += new System.EventHandler(this.muteBtn_Click);
             // 
             // fadeInTimer
             // 
@@ -187,15 +203,11 @@
             this.fadeOutTimer.Interval = 10;
             this.fadeOutTimer.Tick += new System.EventHandler(this.fadeOutTimer_Tick);
             // 
-            // skillLbl
+            // muteTimer
             // 
-            this.skillLbl.AutoSize = true;
-            this.skillLbl.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skillLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
-            this.skillLbl.Location = new System.Drawing.Point(603, 140);
-            this.skillLbl.Name = "skillLbl";
-            this.skillLbl.Size = new System.Drawing.Size(0, 23);
-            this.skillLbl.TabIndex = 3;
+            this.muteTimer.Interval = 5;
+            this.muteTimer.Tag = "";
+            this.muteTimer.Tick += new System.EventHandler(this.muteTimer_Tick);
             // 
             // Yggdrasil
             // 
@@ -236,6 +248,7 @@
         private System.Windows.Forms.Timer fadeInTimer;
         private System.Windows.Forms.Timer fadeOutTimer;
         private System.Windows.Forms.Label skillLbl;
+        private System.Windows.Forms.Timer muteTimer;
     }
 }
 

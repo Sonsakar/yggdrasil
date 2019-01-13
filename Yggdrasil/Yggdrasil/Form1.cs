@@ -3,7 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 using System.Collections.Generic;
+using Yggdrasil.Properties;
 
 namespace Yggdrasil
 {
@@ -16,10 +19,16 @@ namespace Yggdrasil
         Story curStory;
         Color light = new Color();
         Color decisionColor = new Color();
+        Color outline = new Color();
         Color fade = new Color();
         Font main = new Font("Book Antiqua", 15.75f);
         List<int> storyIds = new List<int>();
         int timerNum = 0;
+        bool mute = false;
+        int volume = 90;
+
+        private WaveOutEvent outputDevice;
+        private AudioFileReader audioFile;
 
         public Yggdrasil()
         {
@@ -77,6 +86,7 @@ namespace Yggdrasil
 
             light = Color.FromArgb(247, 241, 227);
             decisionColor = Color.FromArgb(204, 142, 53);
+            outline = Color.FromArgb(255, 121, 63);
 
             exitBtn.Size = new Size(btnEdge, btnEdge);
             exitBtn.BringToFront();
@@ -106,14 +116,14 @@ namespace Yggdrasil
             #region CharacterTab
             //Character Buttons
             Size rightSpan = new Size(Width * 50 / 100, 0);
-            int startY = 150;
+            int startY = Height * 15 / 100;
             desLbl.Location = new Point(Width * 40 / 100, startY);
             desLbl.MaximumSize = rightSpan;
             skillLbl.MaximumSize = rightSpan;
             startBtn.Size = new Size(Width * 50 / 100, Height * 5 / 100);
             int charCount = 0;
-            Size charBtnSize = new Size(200, 50);
-            int charBtnGap = 20;
+            Size charBtnSize = new Size(Width * 20 / 100, 50);
+            int charBtnGap = 15;
             for (int i = 0; i < 100; i++)
             {
                 if(File.Exists("files/char/" + i + ".json"))
@@ -129,17 +139,42 @@ namespace Yggdrasil
                 charBtns[i].Location = new Point( Width - Width * 90 / 100, i * (charBtnGap + charBtnSize.Height) + startY);
                 charBtns[i].Tag = i;
                 charBtns[i].Text = chars[i].name;
+                charBtns[i].FlatStyle = FlatStyle.Flat;
+                charBtns[i].FlatAppearance.BorderColor = outline;
                 charBtns[i].Font = main;
                 charBtns[i].ForeColor = light;
                 charBtns[i].Click += new EventHandler(charBtn_Click);
             }
-            skillLbl.Location = new Point(desLbl.Location.X, startY + desLbl.Height + 20);
-            startBtn.Location = new Point(skillLbl.Location.X, skillLbl.Location.Y + skillLbl.Height + 20);
+            skillLbl.Location = new Point(desLbl.Location.X, Height * 30 / 100);
+            startBtn.Location = new Point(skillLbl.Location.X, Height * 70 / 100);
             #endregion
 
             #endregion
 
+            #region audio
+            if (outputDevice == null)
+            {
+                outputDevice = new WaveOutEvent();
+                outputDevice.PlaybackStopped += OnPlaybackStopped;
+                outputDevice.Volume = volume / 100f;
+            }
+            if (audioFile == null)
+            {
+                audioFile = new AudioFileReader("files/sound/menu.mp3");
+                outputDevice.Init(audioFile);
+            }
+            outputDevice.Play();
+            #endregion
         }
+
+        private void OnPlaybackStopped(object sender, StoppedEventArgs args)
+        {
+            outputDevice.Dispose();
+            outputDevice = null;
+            audioFile.Dispose();
+            audioFile = null;
+        }
+
         private void charBtn_Click(object sender, EventArgs e)
         {
             startBtn.Enabled = true;
@@ -148,13 +183,11 @@ namespace Yggdrasil
             myChar = chars[Convert.ToInt32(button.Tag)];
             //skills: vig, end, str, dex, per, luck, int, mag
             desLbl.Text = myChar.description;
-            skillLbl.Text = "\n\nDieser Charakter hat folgende Attribute:\nVitalität:          " + 
+            skillLbl.Text = "\n\nDieser Charakter hat folgende Attribute:\n\nVitalität:          " + 
                 myChar.skills[0] + "\nAusdauer:           " + myChar.skills[1] + "\nStärke:             " + myChar.skills[2] + 
                 "\nGeschicklichkeit:   " + myChar.skills[3] + "\nWahrnehmung:        " + myChar.skills[4] + 
                 "\nGlück:              " + myChar.skills[5] + "\nIntelligenz:        " + myChar.skills[6] + 
-                "\nMagie:              " + myChar.skills[7];
-
-            startBtn.Location = new Point(skillLbl.Location.X, skillLbl.Location.Y + skillLbl.Height + 20);
+                "\nMagie:              " + myChar.skills[7];        
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -165,7 +198,7 @@ namespace Yggdrasil
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-           
+           //save to local file
         }
 
         private void startBtn_Click(object sender, EventArgs e)
@@ -199,6 +232,32 @@ namespace Yggdrasil
                 timerNum = 0;
                 fadeInTimer.Enabled = false;
             }
+        }
+
+        private void muteBtn_Click(object sender, EventArgs e)
+        {
+            mute = !mute;
+            muteTimer.Enabled = true;
+            if (mute)
+                muteBtn.BackgroundImage = Resources.mute;
+            else
+                muteBtn.BackgroundImage = Resources.speaker;
+        }
+
+        private void muteTimer_Tick(object sender, EventArgs e)
+        {
+            if(mute)
+            {
+                volume--;
+                outputDevice.Volume = volume / 100f;
+            }
+            else
+            {
+                volume++;
+                outputDevice.Volume = volume / 100f;
+            }
+            if(volume == 0 || volume == 90)
+                muteTimer.Enabled = false;
         }
     }
 }

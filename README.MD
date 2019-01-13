@@ -13,6 +13,6 @@ Logos are stored in yggdrasil/Yggdrasil/pic/
 Name files from "0.json" to "n.json". In "skills" fill out numbers based on specific character skills.
 > positions in array must stay the some through project
 >
-> e.g. [endurance, luck, strenght]
+> [vigor, endurance, strength, dexterity, perception, luck, intelligence, magic]
 >
 > 0 is lowest, 100 is highest. 100 meaning certainty. To make Baldur indestructable, set corresponding value to 100 (can and will be ignored in mistletoe situation)

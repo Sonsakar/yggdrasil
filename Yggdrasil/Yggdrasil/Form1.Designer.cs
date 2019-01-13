@@ -39,11 +39,11 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.sceneLbl = new System.Windows.Forms.Label();
             this.situationLbl = new System.Windows.Forms.Label();
-            this.exitBtn = new System.Windows.Forms.Button();
-            this.muteBtn = new System.Windows.Forms.Button();
             this.fadeInTimer = new System.Windows.Forms.Timer(this.components);
             this.fadeOutTimer = new System.Windows.Forms.Timer(this.components);
             this.muteTimer = new System.Windows.Forms.Timer(this.components);
+            this.exitBtn = new System.Windows.Forms.Button();
+            this.muteBtn = new System.Windows.Forms.Button();
             this.myTabs.SuspendLayout();
             this.selectTab.SuspendLayout();
             this.storyPage.SuspendLayout();
@@ -62,6 +62,8 @@
             // selectTab
             // 
             this.selectTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
+            this.selectTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("selectTab.BackgroundImage")));
+            this.selectTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.selectTab.Controls.Add(this.skillLbl);
             this.selectTab.Controls.Add(this.startBtn);
             this.selectTab.Controls.Add(this.desLbl);
@@ -86,9 +88,11 @@
             // 
             // startBtn
             // 
+            this.startBtn.BackColor = System.Drawing.Color.Transparent;
             this.startBtn.Enabled = false;
             this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(63)))));
             this.startBtn.FlatAppearance.BorderSize = 2;
+            this.startBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startBtn.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
@@ -97,7 +101,7 @@
             this.startBtn.Size = new System.Drawing.Size(176, 70);
             this.startBtn.TabIndex = 2;
             this.startBtn.Text = "Start";
-            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.UseVisualStyleBackColor = false;
             this.startBtn.Visible = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
@@ -117,6 +121,8 @@
             // storyPage
             // 
             this.storyPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
+            this.storyPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("storyPage.BackgroundImage")));
+            this.storyPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.storyPage.Controls.Add(this.saveBtn);
             this.storyPage.Controls.Add(this.sceneLbl);
             this.storyPage.Controls.Add(this.situationLbl);
@@ -128,6 +134,7 @@
             // 
             // saveBtn
             // 
+            this.saveBtn.BackColor = System.Drawing.Color.Transparent;
             this.saveBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.save;
             this.saveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.saveBtn.FlatAppearance.BorderSize = 0;
@@ -137,12 +144,13 @@
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 75);
             this.saveBtn.TabIndex = 4;
-            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // sceneLbl
             // 
             this.sceneLbl.AutoSize = true;
+            this.sceneLbl.BackColor = System.Drawing.Color.Transparent;
             this.sceneLbl.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sceneLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
             this.sceneLbl.Location = new System.Drawing.Point(159, 67);
@@ -156,6 +164,7 @@
             // situationLbl
             // 
             this.situationLbl.AutoSize = true;
+            this.situationLbl.BackColor = System.Drawing.Color.Transparent;
             this.situationLbl.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.situationLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(227)))));
             this.situationLbl.Location = new System.Drawing.Point(159, 232);
@@ -168,32 +177,6 @@
     "e ius. ";
             this.situationLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // exitBtn
-            // 
-            this.exitBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.exit;
-            this.exitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.exitBtn.FlatAppearance.BorderSize = 0;
-            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitBtn.Location = new System.Drawing.Point(936, 12);
-            this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(75, 75);
-            this.exitBtn.TabIndex = 3;
-            this.exitBtn.UseVisualStyleBackColor = true;
-            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
-            // 
-            // muteBtn
-            // 
-            this.muteBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.speaker;
-            this.muteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.muteBtn.FlatAppearance.BorderSize = 0;
-            this.muteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.muteBtn.Location = new System.Drawing.Point(845, 12);
-            this.muteBtn.Name = "muteBtn";
-            this.muteBtn.Size = new System.Drawing.Size(75, 75);
-            this.muteBtn.TabIndex = 4;
-            this.muteBtn.UseVisualStyleBackColor = true;
-            this.muteBtn.Click += new System.EventHandler(this.muteBtn_Click);
-            // 
             // fadeInTimer
             // 
             this.fadeInTimer.Tick += new System.EventHandler(this.fadeInTimer_Tick);
@@ -205,16 +188,45 @@
             // 
             // muteTimer
             // 
-            this.muteTimer.Interval = 2;
+            this.muteTimer.Interval = 1;
             this.muteTimer.Tag = "";
             this.muteTimer.Tick += new System.EventHandler(this.muteTimer_Tick);
+            // 
+            // exitBtn
+            // 
+            this.exitBtn.BackColor = System.Drawing.Color.Transparent;
+            this.exitBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.exit;
+            this.exitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitBtn.FlatAppearance.BorderSize = 0;
+            this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitBtn.Location = new System.Drawing.Point(936, 12);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(75, 75);
+            this.exitBtn.TabIndex = 3;
+            this.exitBtn.UseVisualStyleBackColor = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            // 
+            // muteBtn
+            // 
+            this.muteBtn.BackColor = System.Drawing.Color.Transparent;
+            this.muteBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.speaker;
+            this.muteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.muteBtn.FlatAppearance.BorderSize = 0;
+            this.muteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.muteBtn.Location = new System.Drawing.Point(845, 12);
+            this.muteBtn.Name = "muteBtn";
+            this.muteBtn.Size = new System.Drawing.Size(75, 75);
+            this.muteBtn.TabIndex = 4;
+            this.muteBtn.UseVisualStyleBackColor = false;
+            this.muteBtn.Click += new System.EventHandler(this.muteBtn_Click);
             // 
             // Yggdrasil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1023, 607);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1074, 646);
             this.Controls.Add(this.myTabs);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.muteBtn);

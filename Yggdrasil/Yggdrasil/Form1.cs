@@ -58,8 +58,10 @@ namespace Yggdrasil
                 decisionBtns[i].MaximumSize = btnMax;
                 decisionBtns[i].AutoSize = true;
                 decisionBtns[i].ForeColor = decisionColor;
+                decisionBtns[i].BackColor = Color.Transparent;              
                 decisionBtns[i].FlatStyle = FlatStyle.Flat;
                 decisionBtns[i].FlatAppearance.BorderSize = 0;
+                decisionBtns[i].FlatAppearance.MouseOverBackColor = Color.Transparent;
                 decisionBtns[i].Font = main;
                 decisionBtns[i].Text = curStory.decisions[i].text;
                 decisionBtns[i].Click += new EventHandler(decisionBtn_Click);
@@ -124,6 +126,7 @@ namespace Yggdrasil
             int charCount = 0;
             Size charBtnSize = new Size(Width * 20 / 100, 50);
             int charBtnGap = 15;
+            
             for (int i = 0; i < 100; i++)
             {
                 if(File.Exists("files/char/" + i + ".json"))
@@ -131,6 +134,7 @@ namespace Yggdrasil
             }
             Button[] charBtns = new Button[charCount];
             chars = new dynamic[charCount];
+
             for (int i = 0; i < charCount; i++)
             {
                 chars[i] = JsonConvert.DeserializeObject(File.ReadAllText("files/char/" + i + ".json"));
@@ -143,15 +147,18 @@ namespace Yggdrasil
                 charBtns[i].FlatAppearance.BorderColor = outline;
                 charBtns[i].Font = main;
                 charBtns[i].ForeColor = light;
+                charBtns[i].BackColor = Color.Transparent;
                 charBtns[i].Click += new EventHandler(charBtn_Click);
             }
+
             skillLbl.Location = new Point(desLbl.Location.X, Height * 30 / 100);
             startBtn.Location = new Point(skillLbl.Location.X, Height * 70 / 100);
+            
             #endregion
 
             #endregion
 
-            #region audio
+            #region Audio
             if (outputDevice == null)
             {
                 outputDevice = new WaveOutEvent();

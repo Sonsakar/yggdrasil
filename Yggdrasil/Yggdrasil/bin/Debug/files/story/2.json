@@ -10,7 +10,7 @@
                 {
                     "ID": 3,
                     "probability": 1,
-                    "conditions": [0, 35, 80, 63]
+                    "conditions": [70, 68, 87, 51, 48, 37, 53, 30]
                 }
             ]
         }

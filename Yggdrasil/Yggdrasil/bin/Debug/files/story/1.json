@@ -10,12 +10,12 @@
                 {
                     "ID": 2,
                     "probability": 0.7,
-                    "conditions": [0, 35, 80, 63]
+                    "conditions": [70, 68, 87, 51, 48, 37, 53, 30]
                 },
                 {
                     "ID": 3,
                     "probability": 0.4,
-                    "conditions": [0, 5, 90, 2]
+                    "conditions": [70, 68, 87, 51, 48, 37, 53, 30]
                 }
             ]
         },
@@ -25,12 +25,12 @@
                 {
                     "ID": 2,
                     "probability": 0.1,
-                    "conditions": [0, 35, 40, 90]
+                    "conditions": [70, 68, 87, 51, 48, 37, 53, 30]
                 },
                 {
                     "ID": 3,
                     "probability": 0.8,
-                    "conditions": [0, 5, 70, 2]
+                    "conditions": [70, 68, 87, 51, 48, 37, 53, 30]
                 }
             ]
         }

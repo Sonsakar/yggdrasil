@@ -205,7 +205,7 @@
             // 
             // muteTimer
             // 
-            this.muteTimer.Interval = 5;
+            this.muteTimer.Interval = 2;
             this.muteTimer.Tag = "";
             this.muteTimer.Tick += new System.EventHandler(this.muteTimer_Tick);
             // 

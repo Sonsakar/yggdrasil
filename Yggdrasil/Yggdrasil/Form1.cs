@@ -34,7 +34,18 @@ namespace Yggdrasil
         {
             InitializeComponent();
         }
-        public void loadStory()
+
+        protected override CreateParams CreateParams //prevents flickering of form
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
+        public void loadStory() //loads story text and generates decision buttons
         {
             storyIds.Add(curStory.ID);
             sceneLbl.Text = curStory.scenery;
@@ -76,13 +87,15 @@ namespace Yggdrasil
                 startX += decisionBtns[i].Width + btnGap;
             }
         }
-        private void decisionBtn_Click(object sender, EventArgs e)
+
+        private void decisionBtn_Click(object sender, EventArgs e) //event when decision button is clicked
         {
             Button button = sender as Button;
             //fadeOutTimer.Enabled = true;
             //fancy jormun stuff
         }
-        private void Yggdrasil_Load(object sender, EventArgs e)
+
+        private void Yggdrasil_Load(object sender, EventArgs e) //initializes often used variables and generates GUI elements
         {
             int btnEdge = 60;
             int btnGap = 20;
@@ -177,7 +190,7 @@ namespace Yggdrasil
             #endregion
         }
 
-        private void OnPlaybackStopped(object sender, StoppedEventArgs args)
+        private void OnPlaybackStopped(object sender, StoppedEventArgs args) //cleans the audio player
         {
             outputDevice.Dispose();
             outputDevice = null;
@@ -185,7 +198,7 @@ namespace Yggdrasil
             audioFile = null;
         }
 
-        private void charBtn_Click(object sender, EventArgs e)
+        private void charBtn_Click(object sender, EventArgs e) //updates specific info on character selection screen
         {
             startBtn.Enabled = true;
             startBtn.Visible = true;
@@ -200,25 +213,25 @@ namespace Yggdrasil
                 "\nMagie:              " + myChar.skills[7];        
         }
 
-        private void exitBtn_Click(object sender, EventArgs e)
+        private void exitBtn_Click(object sender, EventArgs e) //closes application
         {
             //Maybe build a fance exit dialog, also with ESC press
             Application.Exit();
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e) //saves game progress
         {
            //save to local file
         }
 
-        private void startBtn_Click(object sender, EventArgs e)
+        private void startBtn_Click(object sender, EventArgs e) //starts story with selected character
         {
             myTabs.SelectedIndex++;
             curStory = JsonConvert.DeserializeObject<Story>(File.ReadAllText("files/story/" + myChar.startstory + ".json"));
             loadStory();
         }
 
-        private void fadeOutTimer_Tick(object sender, EventArgs e)
+        private void fadeOutTimer_Tick(object sender, EventArgs e) //fades out color/graphic
         {
             fade = Color.FromArgb(255 - timerNum, 247, 241, 227);
             sceneLbl.ForeColor = fade;
@@ -231,7 +244,7 @@ namespace Yggdrasil
             }
         }
 
-        private void fadeInTimer_Tick(object sender, EventArgs e)
+        private void fadeInTimer_Tick(object sender, EventArgs e) //fades in color/graphic
         {
             fade = Color.FromArgb(timerNum, 247, 241, 227);
             sceneLbl.ForeColor = fade;
@@ -244,7 +257,7 @@ namespace Yggdrasil
             }
         }
 
-        private void muteBtn_Click(object sender, EventArgs e)
+        private void muteBtn_Click(object sender, EventArgs e) //mutes or plays sound
         {
             mute = !mute;
             muteTimer.Enabled = true;
@@ -254,7 +267,7 @@ namespace Yggdrasil
                 muteBtn.BackgroundImage = Resources.speaker;
         }
 
-        private void muteTimer_Tick(object sender, EventArgs e)
+        private void muteTimer_Tick(object sender, EventArgs e) //fades out sound
         {
             if(mute)
             {

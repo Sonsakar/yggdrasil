@@ -62,6 +62,7 @@ namespace Yggdrasil
                 decisionBtns[i].FlatStyle = FlatStyle.Flat;
                 decisionBtns[i].FlatAppearance.BorderSize = 0;
                 decisionBtns[i].FlatAppearance.MouseOverBackColor = Color.Transparent;
+                decisionBtns[i].FlatAppearance.MouseDownBackColor = Color.Transparent;
                 decisionBtns[i].Font = main;
                 decisionBtns[i].Text = curStory.decisions[i].text;
                 decisionBtns[i].Click += new EventHandler(decisionBtn_Click);
@@ -148,6 +149,8 @@ namespace Yggdrasil
                 charBtns[i].Font = main;
                 charBtns[i].ForeColor = light;
                 charBtns[i].BackColor = Color.Transparent;
+                charBtns[i].FlatAppearance.MouseOverBackColor = Color.Transparent;
+                charBtns[i].FlatAppearance.MouseDownBackColor = Color.Transparent;
                 charBtns[i].Click += new EventHandler(charBtn_Click);
             }
 

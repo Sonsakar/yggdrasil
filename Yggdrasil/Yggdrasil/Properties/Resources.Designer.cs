@@ -63,6 +63,16 @@ namespace Yggdrasil.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgrnd {
+            get {
+                object obj = ResourceManager.GetObject("backgrnd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bckgrndVik {
             get {
                 object obj = ResourceManager.GetObject("bckgrndVik", resourceCulture);

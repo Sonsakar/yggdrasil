@@ -11,3 +11,5 @@ E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Release\Yggdrasil.csproj.CoreCo
 E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Release\Yggdrasil.csproj.CopyComplete
 E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Release\Yggdrasil.exe
 E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\obj\Release\Yggdrasil.pdb
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Release\NAudio.dll
+E:\SoftwareDev\yggdrasil\Yggdrasil\Yggdrasil\bin\Release\NAudio.xml

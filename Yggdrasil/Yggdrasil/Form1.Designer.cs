@@ -36,12 +36,12 @@
             this.startBtn = new System.Windows.Forms.Button();
             this.desLbl = new System.Windows.Forms.Label();
             this.storyPage = new System.Windows.Forms.TabPage();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.sceneLbl = new System.Windows.Forms.Label();
             this.situationLbl = new System.Windows.Forms.Label();
             this.fadeInTimer = new System.Windows.Forms.Timer(this.components);
             this.fadeOutTimer = new System.Windows.Forms.Timer(this.components);
             this.muteTimer = new System.Windows.Forms.Timer(this.components);
+            this.saveBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.muteBtn = new System.Windows.Forms.Button();
             this.myTabs.SuspendLayout();
@@ -62,7 +62,7 @@
             // selectTab
             // 
             this.selectTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
-            this.selectTab.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("selectTab.BackgroundImage")));
+            this.selectTab.BackgroundImage = global::Yggdrasil.Properties.Resources.backgrnd;
             this.selectTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.selectTab.Controls.Add(this.skillLbl);
             this.selectTab.Controls.Add(this.startBtn);
@@ -92,6 +92,7 @@
             this.startBtn.Enabled = false;
             this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(121)))), ((int)(((byte)(63)))));
             this.startBtn.FlatAppearance.BorderSize = 2;
+            this.startBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.startBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startBtn.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,7 +122,7 @@
             // storyPage
             // 
             this.storyPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
-            this.storyPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("storyPage.BackgroundImage")));
+            this.storyPage.BackgroundImage = global::Yggdrasil.Properties.Resources.backgrnd;
             this.storyPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.storyPage.Controls.Add(this.saveBtn);
             this.storyPage.Controls.Add(this.sceneLbl);
@@ -131,21 +132,6 @@
             this.storyPage.Size = new System.Drawing.Size(969, 488);
             this.storyPage.TabIndex = 2;
             this.storyPage.Text = "storyPage";
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.BackColor = System.Drawing.Color.Transparent;
-            this.saveBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.save;
-            this.saveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.saveBtn.FlatAppearance.BorderSize = 0;
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.saveBtn.Location = new System.Drawing.Point(758, 5);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 75);
-            this.saveBtn.TabIndex = 4;
-            this.saveBtn.UseVisualStyleBackColor = false;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // sceneLbl
             // 
@@ -192,6 +178,21 @@
             this.muteTimer.Tag = "";
             this.muteTimer.Tick += new System.EventHandler(this.muteTimer_Tick);
             // 
+            // saveBtn
+            // 
+            this.saveBtn.BackColor = System.Drawing.Color.Transparent;
+            this.saveBtn.BackgroundImage = global::Yggdrasil.Properties.Resources.save;
+            this.saveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.saveBtn.FlatAppearance.BorderSize = 0;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.saveBtn.Location = new System.Drawing.Point(758, 5);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 75);
+            this.saveBtn.TabIndex = 4;
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.Color.Transparent;
@@ -225,11 +226,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
+            this.BackgroundImage = global::Yggdrasil.Properties.Resources.backgrnd;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1074, 646);
             this.Controls.Add(this.myTabs);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.muteBtn);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Yggdrasil";

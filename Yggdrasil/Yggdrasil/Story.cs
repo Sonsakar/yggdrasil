@@ -19,6 +19,5 @@
             public float probability { get; set; }
             public int[] conditions { get; set; }
         }
-
     }
 }

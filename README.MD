@@ -3,6 +3,7 @@ Find .json files in "Yggdrasil > Yggdrasil > bin > Debug > files"
 
 Maybe use draw.io or something similiar to actually draw and connect story blocks
 
+Game now has sound! Refer: https://github.com/naudio/NAudio
 #### Story .json
 <span style="color:red">Important: </span>json format changed! Added "area" (int value, leave 0 for now)
 

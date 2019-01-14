@@ -80,7 +80,6 @@ namespace Yggdrasil
                 offset += decisionBtns[i].Width;
             }
             int startX = Convert.ToInt32((Width / 2) - ( offset / 2 ) - ( (decisionBtns.Length -1) * btnGap / 2));
-            Console.WriteLine(offset);
             for (int i = 0; i < decisionBtns.Length; i++)
             {              
                 decisionBtns[i].Location = new Point(startX, Height * 70 / 100);
@@ -93,7 +92,6 @@ namespace Yggdrasil
         {
             Button button = sender as Button;
             if(!(fadeOutTimer.Enabled || fadeInTimer.Enabled)) fadeOutTimer.Enabled = true;
-            //fancy jormun stuff
         }
 
         private void charBtn_Click(object sender, EventArgs e) //updates specific info on character selection screen
@@ -162,7 +160,7 @@ namespace Yggdrasil
             skillLbl.MaximumSize = rightSpan;
             startBtn.Size = new Size(Width * 50 / 100, Height * 5 / 100);
             int charCount = 0;
-            Size charBtnSize = new Size(Width * 20 / 100, 50);
+            Size charBtnSize = new Size(Width * 20 / 100, Height * 5 / 100);
             int charBtnGap = 15;
             
             for (int i = 0; i < 100; i++)

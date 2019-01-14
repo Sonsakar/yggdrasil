@@ -1,5 +1,6 @@
 {
     "name": "Fenrir",
+    "ID": 0,
     "description": "Du bist ein Wolf. Loki ist dein Vater und die Asen haben Angst vor dir. Sie haben dich nach Asgard gebracht, wo du startest.",
     "skills": [81, 74, 92, 64, 87, 11, 26, 7],
     "startstory": 2

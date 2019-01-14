@@ -61,8 +61,7 @@
             // 
             // selectTab
             // 
-            this.selectTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
-            this.selectTab.BackgroundImage = global::Yggdrasil.Properties.Resources.backgrnd;
+            this.selectTab.BackColor = System.Drawing.Color.Black;
             this.selectTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.selectTab.Controls.Add(this.skillLbl);
             this.selectTab.Controls.Add(this.startBtn);
@@ -225,8 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
-            this.BackgroundImage = global::Yggdrasil.Properties.Resources.backgrnd;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1074, 646);
             this.Controls.Add(this.myTabs);

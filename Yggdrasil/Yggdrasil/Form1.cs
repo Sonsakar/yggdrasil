@@ -11,7 +11,7 @@ namespace Yggdrasil
 {
     public partial class Yggdrasil : Form
     {
-
+        #region Var Area
         Button[] decisionBtns;
         dynamic[] chars;
         dynamic myChar; //skills: vig, end, str, dex, per, luck, int, mag
@@ -20,15 +20,15 @@ namespace Yggdrasil
         Color decisionColor = new Color();
         Color outline = new Color();
         Color fade = new Color();
+        Color dfade = new Color();
         Font main = new Font("Book Antiqua", 15.75f);
         List<int> storyIds = new List<int>();
-        int timerNum = 0;
         bool mute = false;
         int volume = 90;
-        int r, g, b;
-
+        int lr, lg, lb, dr, dg, db;    
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
+        #endregion
 
         public Yggdrasil()
         {
@@ -83,28 +83,48 @@ namespace Yggdrasil
             Console.WriteLine(offset);
             for (int i = 0; i < decisionBtns.Length; i++)
             {              
-                decisionBtns[i].Location = new Point(startX, Height * 30 / 100 + situationLbl.Height + sceneLbl.Height);
+                decisionBtns[i].Location = new Point(startX, Height * 70 / 100);
                 startX += decisionBtns[i].Width + btnGap;
             }
         }
 
+        #region Generated Button Click Events
         private void decisionBtn_Click(object sender, EventArgs e) //event when decision button is clicked
         {
             Button button = sender as Button;
-            fadeOutTimer.Enabled = true;
+            if(!(fadeOutTimer.Enabled || fadeInTimer.Enabled)) fadeOutTimer.Enabled = true;
             //fancy jormun stuff
         }
+
+        private void charBtn_Click(object sender, EventArgs e) //updates specific info on character selection screen
+        {
+            startBtn.Enabled = true;
+            startBtn.Visible = true;
+            Button button = sender as Button;
+            myChar = chars[Convert.ToInt32(button.Tag)];
+            //skills: vig, end, str, dex, per, luck, int, mag
+            desLbl.Text = myChar.description;
+            skillLbl.Text = "\n\nDieser Charakter hat folgende Attribute:\n\nVitalität:          " +
+                myChar.skills[0] + "\nAusdauer:           " + myChar.skills[1] + "\nStärke:             " + myChar.skills[2] +
+                "\nGeschicklichkeit:   " + myChar.skills[3] + "\nWahrnehmung:        " + myChar.skills[4] +
+                "\nGlück:              " + myChar.skills[5] + "\nIntelligenz:        " + myChar.skills[6] +
+                "\nMagie:              " + myChar.skills[7];
+        }
+        #endregion
 
         private void Yggdrasil_Load(object sender, EventArgs e) //initializes often used variables and generates GUI elements
         {
             int btnEdge = 60;
             int btnGap = 20;
 
-            r = 247;
-            g = 241;
-            b = 227;
-            light = Color.FromArgb(r, g, b);
-            decisionColor = Color.FromArgb(204, 142, 53);
+            lr = 247;
+            lg = 241;
+            lb = 227;
+            light = Color.FromArgb(lr, lg, lb);
+            dr = 204;
+            dg = 142;
+            db = 53;
+            decisionColor = Color.FromArgb(dr, dg, db);
             outline = Color.FromArgb(255, 121, 63);
 
             exitBtn.Size = new Size(btnEdge, btnEdge);
@@ -201,22 +221,15 @@ namespace Yggdrasil
             audioFile.Dispose();
             audioFile = null;
         }
-
-        private void charBtn_Click(object sender, EventArgs e) //updates specific info on character selection screen
+       
+        private void startBtn_Click(object sender, EventArgs e) //starts story with selected character
         {
-            startBtn.Enabled = true;
-            startBtn.Visible = true;
-            Button button = sender as Button;
-            myChar = chars[Convert.ToInt32(button.Tag)];
-            //skills: vig, end, str, dex, per, luck, int, mag
-            desLbl.Text = myChar.description;
-            skillLbl.Text = "\n\nDieser Charakter hat folgende Attribute:\n\nVitalität:          " + 
-                myChar.skills[0] + "\nAusdauer:           " + myChar.skills[1] + "\nStärke:             " + myChar.skills[2] + 
-                "\nGeschicklichkeit:   " + myChar.skills[3] + "\nWahrnehmung:        " + myChar.skills[4] + 
-                "\nGlück:              " + myChar.skills[5] + "\nIntelligenz:        " + myChar.skills[6] + 
-                "\nMagie:              " + myChar.skills[7];        
+            myTabs.SelectedIndex++;
+            curStory = JsonConvert.DeserializeObject<Story>(File.ReadAllText("files/story/" + myChar.startstory + ".json"));
+            loadStory();
         }
 
+        #region Control Buttons
         private void exitBtn_Click(object sender, EventArgs e) //closes application
         {
             //Maybe build a fance exit dialog, also with ESC press
@@ -225,69 +238,67 @@ namespace Yggdrasil
 
         private void saveBtn_Click(object sender, EventArgs e) //saves game progress
         {
-           //save to local file
+            //save to local file
         }
+        #endregion
 
-        private void startBtn_Click(object sender, EventArgs e) //starts story with selected character
-        {
-            myTabs.SelectedIndex++;
-            curStory = JsonConvert.DeserializeObject<Story>(File.ReadAllText("files/story/" + myChar.startstory + ".json"));
-            loadStory();
-        }
-
+        #region Text and Button fade out
         private void fadeOutTimer_Tick(object sender, EventArgs e) //fades out color/graphic
         {
-            //r = 247;
-            //g = 241;
-            //b = 227;
-            if (r > 0)
-                r -= 8;
-            if (g > 0)
-                g -= 8;
-            if (b > 0)
-                b -= 8;
-            if (r < 0)
-                r = 0;
-            if (g < 0)
-                g = 0;
-            if (b < 0)
-                b = 0;
+            if (lr > 0 || dr > 0) { lr -= 8; dr -= 8; }              
+            if (lg > 0 || dg > 0) { lg -= 8; dg -= 8; }
+            if (lb > 0 || db > 0) { lb -= 8; db -= 5; }
+            if (lr < 0) lr = 0;
+            if (lg < 0) lg = 0;
+            if (lb < 0) lb = 0;
+            if (dr < 0) dr = 0;
+            if (dg < 0) dg = 0;
+            if (db < 0) db = 0;
 
-            fade = Color.FromArgb(r, g, b);
+            fade = Color.FromArgb(lr, lg, lb);
+            dfade = Color.FromArgb(dr, dg, db);
             sceneLbl.ForeColor = fade;
             situationLbl.ForeColor = fade;
-            if (r == 0 && g == 0 && b == 0)
+            for (int i = 0; i < curStory.decisions.Length; i++)
+            {
+                decisionBtns[i].ForeColor = dfade;
+            }
+            if (lr == 0 && lg == 0 && lb == 0 && dr == 0 && dg == 0 && db == 0)
             {
                 fadeOutTimer.Enabled = false;
-                //change Text
+                //change Text (jormun stuff)
                 fadeInTimer.Enabled = true;
             }
         }
 
         private void fadeInTimer_Tick(object sender, EventArgs e) //fades in color/graphic
         {
-            if (r < 247)
-                r += 8;
-            if (g < 241)
-                g += 8;
-            if (b < 227)
-                b += 8;
-            if (r > 247)
-                r = 247;
-            if (g > 241)
-                g = 241;
-            if (b > 227)
-                b = 227;
-
-            fade = Color.FromArgb(r, g, b);
+            if (lr < 247 || dr < 204) { lr += 8; dr += 8; }
+            if (lg < 241 || dg < 142) { lg += 8; dg += 8; }
+            if (lb < 227 || db < 53) { lb += 8; db += 5; }
+            if (lr > 247) lr = 247;
+            if (lg > 241) lg = 241;
+            if (lb > 227) lb = 227;
+            if (dr > 204) dr = 204;
+            if (dg > 142) dg = 142;
+            if (db > 53) db = 53;
+            fade = Color.FromArgb(lr, lg, lb);
+            dfade = Color.FromArgb(dr, dg, db);
             sceneLbl.ForeColor = fade;
             situationLbl.ForeColor = fade;
-            if (r == 247 && g == 241 && b == 227)
+
+            for (int i = 0; i < curStory.decisions.Length; i++) //curStory already changed at this point
+            {
+                decisionBtns[i].ForeColor = dfade;
+            }
+            if (lr == 247 && lg == 241 && lb == 227 && dr == 204 && dg == 142 && db == 53)
             {
                 fadeInTimer.Enabled = false;
             }
         }
+        #endregion
 
+        #region Mute Control
         private void muteBtn_Click(object sender, EventArgs e) //mutes or plays sound
         {
             mute = !mute;
@@ -313,5 +324,6 @@ namespace Yggdrasil
             if(volume == 0 || volume == 90)
                 muteTimer.Enabled = false;
         }
+        #endregion
     }
 }

@@ -121,8 +121,7 @@
             // 
             // storyPage
             // 
-            this.storyPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(20)))), ((int)(((byte)(38)))));
-            this.storyPage.BackgroundImage = global::Yggdrasil.Properties.Resources.backgrnd;
+            this.storyPage.BackColor = System.Drawing.Color.Black;
             this.storyPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.storyPage.Controls.Add(this.saveBtn);
             this.storyPage.Controls.Add(this.sceneLbl);
@@ -180,11 +179,12 @@
             // 
             // fadeInTimer
             // 
+            this.fadeInTimer.Interval = 1;
             this.fadeInTimer.Tick += new System.EventHandler(this.fadeInTimer_Tick);
             // 
             // fadeOutTimer
             // 
-            this.fadeOutTimer.Interval = 10;
+            this.fadeOutTimer.Interval = 1;
             this.fadeOutTimer.Tick += new System.EventHandler(this.fadeOutTimer_Tick);
             // 
             // muteTimer

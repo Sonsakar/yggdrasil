@@ -25,6 +25,7 @@ namespace Yggdrasil
         int timerNum = 0;
         bool mute = false;
         int volume = 90;
+        int r, g, b;
 
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
@@ -90,7 +91,7 @@ namespace Yggdrasil
         private void decisionBtn_Click(object sender, EventArgs e) //event when decision button is clicked
         {
             Button button = sender as Button;
-            //fadeOutTimer.Enabled = true;
+            fadeOutTimer.Enabled = true;
             //fancy jormun stuff
         }
 
@@ -99,7 +100,10 @@ namespace Yggdrasil
             int btnEdge = 60;
             int btnGap = 20;
 
-            light = Color.FromArgb(247, 241, 227);
+            r = 247;
+            g = 241;
+            b = 227;
+            light = Color.FromArgb(r, g, b);
             decisionColor = Color.FromArgb(204, 142, 53);
             outline = Color.FromArgb(255, 121, 63);
 
@@ -126,6 +130,7 @@ namespace Yggdrasil
 
             saveBtn.Size = new Size(btnEdge, btnEdge);
             saveBtn.Location = new Point(Width - btnGap * 3 - btnEdge * 3, btnGap);
+
             #endregion
 
             #region CharacterTab
@@ -232,26 +237,53 @@ namespace Yggdrasil
 
         private void fadeOutTimer_Tick(object sender, EventArgs e) //fades out color/graphic
         {
-            fade = Color.FromArgb(255 - timerNum, 247, 241, 227);
+            //r = 247;
+            //g = 241;
+            //b = 227;
+            if (r > 0)
+                r -= 8;
+            if (g > 0)
+                g -= 8;
+            if (b > 0)
+                b -= 8;
+            if (r < 0)
+                r = 0;
+            if (g < 0)
+                g = 0;
+            if (b < 0)
+                b = 0;
+
+            fade = Color.FromArgb(r, g, b);
             sceneLbl.ForeColor = fade;
             situationLbl.ForeColor = fade;
-            timerNum++;
-            if (timerNum == 256)
+            if (r == 0 && g == 0 && b == 0)
             {
-                timerNum = 0;
                 fadeOutTimer.Enabled = false;
+                //change Text
+                fadeInTimer.Enabled = true;
             }
         }
 
         private void fadeInTimer_Tick(object sender, EventArgs e) //fades in color/graphic
         {
-            fade = Color.FromArgb(timerNum, 247, 241, 227);
+            if (r < 247)
+                r += 8;
+            if (g < 241)
+                g += 8;
+            if (b < 227)
+                b += 8;
+            if (r > 247)
+                r = 247;
+            if (g > 241)
+                g = 241;
+            if (b > 227)
+                b = 227;
+
+            fade = Color.FromArgb(r, g, b);
             sceneLbl.ForeColor = fade;
             situationLbl.ForeColor = fade;
-            timerNum++;
-            if (timerNum == 256)
+            if (r == 247 && g == 241 && b == 227)
             {
-                timerNum = 0;
                 fadeInTimer.Enabled = false;
             }
         }
